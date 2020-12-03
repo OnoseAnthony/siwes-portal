@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Fupre, Siwes, Portal">
+    <meta name="author" content="PaperCode C.S">
+    <meta name="description" content="This is a site to enable eligible students of the Federal University of Petroleum Resources Effurun
+                register for the student industrial work experience scheme (SIWES)">
+
+    <title>login</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet"  href="{% static 'css/style.css' %}"/>
+
+    <!--===============================================================================================-->
+    	<link rel="icon" type="image/png" href="{% static 'imagesl/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'vendorl/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'fontsl/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'fontsl/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'vendorl/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'vendorl/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'vendorl/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'vendorl/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'vendorl/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    	<link rel="stylesheet" type="text/css" href="{% static 'cssl/util.css' %}">
+    	<link rel="stylesheet" type="text/css" href="{% static 'cssl/main.css' %}">
+    <!--===============================================================================================-->
+  </head>
+  <body class="">
+
+          <br><br>
+
+          <!-- Header -->
+          <header id="header" class="">
+            <div class="container">
+
+              <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                  <a class="logo" href="{% url 'home' %}">
+                    <img src="{% static "images/banner.png" %}" alt="Uh. Oh! Resource not found">
+                  </a>
+                </div>
+                <!-- /Logo -->
+
+                <!-- Mobile toggle -->
+                <button class="navbar-toggle">
+                  <span></span>
+                </button>
+                <!-- /Mobile toggle -->
+              </div>
+            </div>
+          </header>
+          <!-- /Header -->
+
+      <div class="limiter">
+        <div class="container-login100">
+          <div class="wrap-login100">
+            <div class="login100-form-title" style="background-color:black;">
+              <span class="login100-form-title-1">
+                Sign In
+              </span>
+            </div>
+
+            <form class="login100-form" method="POST">
+              {% csrf_token %}
+              <div class="form-group col-md-4 mb-0">
+                  <p style="color: red">{{ error }}</p>
+              </div>
+              <div class="wrap-input100 m-b-26">
+                <span class="label-input100">Matric no</span>
+                <input class="input100" type="text" name="matric_no" value="" placeholder="Enter Matric No">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="wrap-input100 m-b-18" >
+                <span class="label-input100">Password</span>
+                <input class="input100" type="password" name="password" value="" placeholder="Enter Password">
+                <span class="focus-input100"></span>
+              </div>
+
+              <div class="flex-sb-m w-full p-b-30">
+                <div class="contact100-form-checkbox">
+
+                    <a href="{% url 'accounts:register' %}">Create an account</a>
+
+                </div>
+
+                <div class="contact100-form-checkbox">
+                  <a href="{% url 'accounts:reset_password' %}">
+                    Forgot Password?
+                  </a>
+                </div>
+              </div>
+
+              <div class="container-login100-form-btn">
+                <input  class="login100-form-btn" type="submit" name="" value="Login" class="btn btn-success">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <p style="color:black;"><strong> © 2019. Onose_Anthonii Inc | PaperCode C.S </strong> </p>
+          </div>
+        </div>
+        </div>
+
+
+
+      <!--===============================================================================================-->
+      	<script src="{% static "vendorl/jquery/jquery-3.2.1.min.js" %}"></script>
+      <!--===============================================================================================-->
+      	<script src="{% static "vendorl/animsition/js/animsition.min.js" %}"></script>
+      <!--===============================================================================================-->
+      	<script src="{% static "vendorl/bootstrap/js/popper.js" %}"></script>
+      	<script src="{% static "vendorl/bootstrap/js/bootstrap.min.js" %}"></script>
+      <!--===============================================================================================-->
+      	<script src="{% static "vendorl/select2/select2.min.js" %}"></script>
+      <!--===============================================================================================-->
+      	<script src="{% static "vendorl/daterangepicker/moment.min.js" %}"></script>
+      	<script src="{% static "vendorl/daterangepicker/daterangepicker.js" %}"></script>
+      <!--===============================================================================================-->
+      	<script src="{% static "vendorl/countdowntime/countdowntime.js" %}"></script>
+      <!--===============================================================================================-->
+      	<script src="{% static "jsl/main.js" %}"></script>
+
+
+    <!-- preloader -->
+    <div id='preloader'><div class='preloader'></div></div>
+    <!-- /preloader -->
+
+    <!-- jQuery Plugins -->
+    <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+
+  </body>
+</html>

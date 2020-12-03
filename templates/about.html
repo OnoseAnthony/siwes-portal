@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Fupre, Siwes, Portal">
+    <meta name="author" content="PaperCode C.S">
+    <meta name="description" content="This is a site to enable eligible students of the Federal University of Petroleum Resources Effurun
+                register for the student industrial work experience scheme (SIWES)">
+
+    <title>About</title>
+
+    <!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet"  href="{% static 'css/style.css' %}"/>
+  </head>
+  <body>
+
+          <br><br>
+
+          <!-- Header -->
+          <header id="header" class="">
+            <div class="container">
+
+              <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                  <a class="logo" href="{% url 'home' %}">
+                    <img src="{% static "images/banner.png" %}" alt="Uh. Oh! Resource not found">
+                  </a>
+                </div>
+                <!-- /Logo -->
+
+                <!-- Mobile toggle -->
+                <button class="navbar-toggle">
+                  <span></span>
+                </button>
+                <!-- /Mobile toggle -->
+              </div>
+
+              <!-- Navigation -->
+              <nav id="nav">
+                {% if user.is_authenticated %}
+                <ul class="main-menu nav navbar-nav navbar-right">
+                  <li><a style="color:black;"href="{% url 'accounts:view_profile' %}">Dashboard</a></li>
+                  <!-- <li><a href="/accounts/profile/edit">Edit Profile</a></li> -->
+                  <li><a style="color:black;" href="{% url 'accounts:edit_details' %}">Siwes Info</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:payments' %}">Payments</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:user_logout' %}">Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="main-menu nav navbar-nav navbar-right">
+                  <li><a style="color:black;" href="{% url 'home' %}">Home</a></li>
+                  <li><a style="color:black;" href="{% url 'about' %}">About</a></li>
+                  <li><a style="color:black;" href="{% url 'contact' %}">Contact</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:user_login' %}">Login</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:register' %}">Register</a></li>
+                </ul>
+                {% endif%}
+              </nav>
+              <!-- /Navigation -->
+
+            </div>
+          </header>
+          <!-- /Header -->
+          <br><br><br>
+          <div class="container">
+            <!-- row -->
+            <div class="row">
+
+              <div class="col-md-4">
+                  <img style="border-radius:50%;"src="{% static 'images/director.jpg' %}" alt="">
+                  <p></p>
+                  <p style="color:black;" class="lead">Dr. Enaibe Aroghene Edison</p>
+              </div>
+
+              <div class="col-md-8">
+                <h3 style="color:#C00;">Director of Siwes Unit</h3>
+                <p style="color:black;" class="lead">  Dr. Enaibe Aroghene Edison is an Associate Professor of Theoretical Physics in the College of Science, Department of Physics. Born on April 26 1970, in Benin City, Edo State, Dr. Enaibe obtained his Doctor of Philosophy degree (Ph.D) in Theoretical Physics from the University of Benin, in 2003 specializing in Condensed Matter Physics. He also holds a Bachelor’s Degree and a Master’s degree in Theoretical Physics from the University of Benin, (UNIBEN) in 1992 and 1998 respectively.
+                </p>
+              </div>
+
+
+
+            </div>
+            <!-- /row -->
+
+          </div>
+
+                          <!-- About Siwes -->
+                      <div id="courses" class="section">
+
+                        <!-- container -->
+                        <div class="container">
+
+                          <!-- row -->
+                          <div class="row">
+                            <div class="section-header text-center">
+                              <h2 style="color:#C00;">Student Industrial Work Experience Scheme {SIWES} </h2>
+                            </div>
+                          </div>
+                          <!-- /row -->
+                        </div>
+                        <!-- container -->
+
+                        <div class="container">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <p style="color:black;" class="lead">The Students’ Industrial Work Experience Scheme (SIWES) is a six-credit course that is established
+                                  for students to gain practical experience of the application of theoretical course work they study in the university.
+                                  The SIWES is done for a period of six months and it's undertaken at 300 Level second semester for Science students
+                                  and 400 Level second semester for students in the College of Technology.
+                                  At the end of the program, the Federal Government gives some allowances to the students to cover minor expenses they incurred during the training.
+                                  In order to achieve the aim of the SIWES Program, the SIWES Unit was established in every institution and made mandatory by the Federal Government of Nigeria
+                                  and it is regulated by the Industrial Training Fund (ITF) in order to achieve the objectives of the SIWES.
+                                </p>
+                                <p></p>
+                                <p style="color:black;" class="lead">The Students’ Industrial Work Experience Scheme (SIWES) Unit of FUPRE was inaugurated on the 15th of February, 2010 with the responsibility to;</p><br>
+
+                                <ul style="color:black;" class="lead">
+
+                                  <li>** Prepare and submit eight copies of Master Listsand eight copies of placement lists of each SIWES year to the ITF. All submissions must be made through the National Universities Commission (NUC). However two advanced copies should be sent to the ITF Warri Area Office.</li><br>
+
+                                  <li>** Apply job-specifications as prepared for all the accredited courses and award appropriate credit units in accordance with Federal Government minimum academic standard guidelines.</li><br>
+
+                                  <li>** Identify placement opportunities for students’ attachment with employers.</li><br>
+
+                                  <li>** Supervise students at their places of attachment and sign their log-books.</li><br>
+
+                                  <li>** Organize orientation courses in collaboration with the Industrial Training Fund (ITF) for the students.</li><br>
+
+                                  <li>** Submit comprehensive reports of the scheme to Industrial Training Fund ITF through Nigerian Universities Commission NUC. The ITF Form 8 at the end of every year’s programme is submitted to ITF.</li><br>
+
+                                  <li>** Ensure payment of outstanding allowances and render all returns to the ITF during the SIWES year.</li><br>
+
+                                  <li>** Submit all completed ITF form 8 to the nearest ITF Area Office.</li><br>
+
+                                </ul>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                      <!-- /About Siwes -->
+                  </div>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <p style="color:black;"><strong> © 2019. Onose_Anthonii Inc | PaperCode C.S </strong> </p>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+          <!-- preloader -->
+          <div id='preloader'><div class='preloader'></div></div>
+          <!-- /preloader -->
+
+          <!-- jQuery Plugins -->
+          <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+          <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+          <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+
+  </body>
+</html>

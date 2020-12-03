@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Fupre, Siwes, Portal">
+    <meta name="author" content="PaperCode C.S">
+    <meta name="description" content="This is a site to enable eligible students of the Federal University of Petroleum Resources Effurun
+                register for the student industrial work experience scheme (SIWES)">
+
+    <title>Contact</title>
+
+    <!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet"  href="{% static 'css/style.css' %}"/>
+  </head>
+  <body>
+
+          <br><br>
+
+          <!-- Header -->
+          <header id="header" class="">
+            <div class="container">
+
+              <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                  <a class="logo" href="{% url 'home' %}">
+                    <img src="{% static "images/banner.png" %}" alt="Uh. Oh! Resource not found">
+                  </a>
+                </div>
+                <!-- /Logo -->
+
+                <!-- Mobile toggle -->
+                <button class="navbar-toggle">
+                  <span></span>
+                </button>
+                <!-- /Mobile toggle -->
+              </div>
+
+              <!-- Navigation -->
+              <nav id="nav">
+                {% if user.is_authenticated %}
+                <ul class="main-menu nav navbar-nav navbar-right">
+                  <li><a style="color:black;"href="{% url 'accounts:view_profile' %}">Dashboard</a></li>
+                  <!-- <li><a href="/accounts/profile/edit">Edit Profile</a></li> -->
+                  <li><a style="color:black;" href="{% url 'accounts:edit_details' %}">Siwes Info</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:payments' %}">Payments</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:user_logout' %}">Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="main-menu nav navbar-nav navbar-right">
+                  <li><a style="color:black;" href="{% url 'home' %}">Home</a></li>
+                  <li><a style="color:black;" href="{% url 'about' %}">About</a></li>
+                  <li><a style="color:black;" href="{% url 'contact' %}">Contact</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:user_login' %}">Login</a></li>
+                  <li><a style="color:black;" href="{% url 'accounts:register' %}">Register</a></li>
+                </ul>
+                {% endif%}
+              </nav>
+              <!-- /Navigation -->
+
+            </div>
+          </header>
+          <!-- /Header -->
+
+      <br><br><br><br>
+      <div class="container">
+
+        <!-- The map -->
+        <div class="row map-wrap" style="width:100%; height: 445px;" id="map">
+          <iframe style="border:0; width:100%; height: 445px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.3161047076264!2d5.8584725144476275!3d5.520023335546032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1041b03234470647%3A0x28800e52638171d1!2sFederal+University+of+Petroleum+Resources+Effurun!5e0!3m2!1sen!2sng!4v1558959476269!5m2!1sen!2sng" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div><br><br><br><br><br>
+
+
+      <!-- contact information -->
+      <div class="col-md-7 ">
+        <h4 style="color:#C00;">Contact Information</h4>
+        <ul style="color:black;" class="contact-details">
+          <li><i class="lnr lnr-envelope">Pc</i>siwes@fupre.edu.ng</li>
+          <li><i class="fa fa-phone">Pc</i>+234 816 582 7696</li>
+          <li><i class="fa fa-phone">Pc</i>+234 812 803 4482</li>
+          <li><i class="fa fa-map-marker">Pc</i>Federal University of Petroleum Resources, P.M.B 1221, Effurun, Delta State, Nigeria</li>
+        </ul>
+      </div>
+      <!-- contact information -->
+
+        <!-- contact form -->
+      <div class="col-md-5">
+        <div class="contact-form">
+          <h4 style="color:#C00;">Send A Message</h4>
+          <form  method="POST">
+            {% csrf_token %}
+            <input class="input"  type="email" name="email" placeholder="Email">
+            <input class="input" type="text" name="subject" placeholder="Subject">
+            <textarea class="input" name="message" placeholder="Enter your Message"></textarea>
+            <button class="main-button icon-button pull-right">Send Message</button><br><br><br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+    <!-- /contact form -->
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <p style="color:black;"><strong> © 2019. Onose_Anthonii Inc | PaperCode C.S </strong> </p>
+        </div>
+      </div>
+      </div>
+
+
+
+
+    <!-- preloader -->
+    <div id='preloader'><div class='preloader'></div></div>
+    <!-- /preloader -->
+
+    <!-- jQuery Plugins -->
+    <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+
+  </body>
+</html>

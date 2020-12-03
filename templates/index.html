@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Fupre, Siwes, Portal">
+    <meta name="author" content="PaperCode C.S">
+    <meta name="description" content="This is a site to enable eligible students of the Federal University of Petroleum Resources Effurun
+                register for the student industrial work experience scheme (SIWES)">
+
+    <title>Index</title>
+
+    <!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet"  href="{% static 'css/style.css' %}"/>
+    <style>
+          .accordion {
+            background-color:  #003679;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+          }
+
+          .active, .accordion:hover {
+            background-color: #C00;
+          }
+
+          .accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+          }
+
+          .active:after {
+            content: "\2212";
+          }
+
+          .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+          }
+    </style>
+  </head>
+  <body>
+
+      <br><br>
+
+      <!-- Header -->
+      <header id="header" class="">
+        <div class="container">
+
+          <div class="navbar-header">
+            <!-- Logo -->
+            <div class="navbar-brand">
+              <a class="logo" href="{% url 'home' %}">
+                <img src="{% static "images/banner.png" %}" alt="Uh. Oh! Resource not found">
+              </a>
+            </div>
+            <!-- /Logo -->
+
+            <!-- Mobile toggle -->
+            <button class="navbar-toggle">
+              <span></span>
+            </button>
+            <!-- /Mobile toggle -->
+          </div>
+
+          <!-- Navigation -->
+          <nav id="nav">
+            <ul class="main-menu nav navbar-nav navbar-right">
+              <li><a style="color:black;" href="{% url 'home' %}">Home</a></li>
+              <li><a style="color:black;" href="{% url 'about' %}">About</a></li>
+              <li><a style="color:black;" href="#up">News</a></li>
+              <li><a style="color:black;" href="{% url 'contact' %}">Contact</a></li>
+              <li><a style="color:black;" href="{% url 'accounts:user_login' %}">Login</a></li>
+              <li><a style="color:black;" href="{% url 'accounts:register' %}">Register</a></li>
+            </ul>
+          </nav>
+          <!-- /Navigation -->
+
+        </div>
+      </header>
+      <!-- /Header -->
+
+            <!-- Home -->
+      <div id="home" class="hero-area">
+
+        <!-- Backgound Image -->
+        <div class="bg-image bg-parallax overlay" style='background-image: url("{% static "images/hb.png" %}")'>
+
+        </div>
+        <!-- /Backgound Image -->
+
+        <div class="home-wrapper">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="white-text">Federal University Of Petroleum Resources</h1>
+                <p class="lead white-text">Siwes Online Portal.</p>
+                <a class="main-button icon-button" href="{% url 'accounts:register' %}">Get Started!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /Home -->
+
+      <!-- About Portal-->
+		<div id="about" class="section">
+
+			<!-- container -->
+			<div class="container">
+
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-6">
+						<div class="section-header">
+							<h2 style="color:#C00;">Welcome to the University Siwes Portal</h2>
+							<p  style="color:black;" class="lead">Fastracking siwes procedures.</p>
+						</div>
+
+						<!-- feature -->
+						<div class="feature">
+							<i class="feature-icon fa fa-flask"></i>
+							<div class="feature-content">
+								<h4 style="color:#C00;">Online Registration </h4>
+								<p style="color:black;">Fastracking your registration for the student industrial work experience scheme.</p>
+							</div>
+						</div>
+						<!-- /feature -->
+
+						<!-- feature -->
+						<div class="feature">
+							<i class="feature-icon fa fa-users"></i>
+							<div class="feature-content">
+								<h4 style="color:#C00;">Making Payments</h4>
+								<p style="color:black;">Fastracking payments for industrial training materials using secure payment gateways.</p>
+							</div>
+						</div>
+						<!-- /feature -->
+
+						<!-- feature -->
+						<div class="feature">
+							<i class="feature-icon fa fa-comments"></i>
+							<div class="feature-content">
+								<h4 style="color:#C00;">News Updates</h4>
+								<p style="color:black;">Providing relevant updates to industrial training students relating to their programme.</p>
+							</div>
+						</div>
+						<!-- /feature -->
+
+					</div>
+
+          <div class="col-md-1">
+          </div>
+
+					<div class="col-md-5">
+						<div class="about-img">
+							<img style="height:350px;width:480px" src="{% static 'images/ab.jpg' %}" alt="">
+						</div>
+					</div>
+
+				</div>
+				<!-- row -->
+
+			</div>
+			<!-- container -->
+		</div>
+		<!-- /About Portal-->
+
+
+      <div id="up" class="container">
+          <div class="row">
+          <h2 style="color:#C00;vertical-align:middle;text-align:center"> News Updates </h2>
+        </div>
+      </div>
+      <br><br>
+
+      <div class="container">
+        {% if not newzupdate in news %}
+        {% for newzupdate in news %}
+        <button style="color:white;"class="accordion">{{newzupdate.heading}}</button>
+        <div class="panel">
+          <p class="lead panel-heading" style="color:black;">
+            Posted by: {{newzupdate.by}},
+            <span>Date: {{newzupdate.date}}</span>
+          </p>
+          <p class=""style="color:black;">{{newzupdate.body}}
+            {% if newzupdate.file %}<a style="color:blue;" href="{{newzupdate.file.url}}" target="_blank">Click to Download</a>{% endif %}</p>
+        </div>
+        {% endfor%}
+        {% else %}
+        <button style="color:white;"class="accordion">APPLICATION FOR THE 2018/2019 SESSION SIWES PROGRAMME NOW OPEN</button>
+        <div class="panel">
+          <p class="lead panel-heading" style="color:black;">
+            Posted by: Admin,
+            <span>Date: April 29, 2019, 14:13 p.m. </span>
+          </p>
+          <p class=""style="color:black;">This is to notify all eligible stakeholders that the University siwes portal is now open
+                    for registration for the 2019/2020 session of the student industrial work experience scheme . </p>
+        </div>
+        <button style="color:white;"class="accordion">SIWES ORIENTATION PROGRAMME FOR 2018/2019 SESSION</button>
+        <div class="panel">
+          <p class="lead panel-heading" style="color:black;">
+            Posted by: Admin,
+            <span>Date: May 7, 2019, 10:43 a.m. </span>
+          </p>
+          <p class=""style="color:black;">This is to notify all eligible stakeholders that the orientation programme for
+                  the 2019/2020 session is to hold on Wednesday 15th May 2019 by 10am at Lecture Theatre 1. All stakeholders
+                    are advised to attend.</p>
+        </div>
+        {% endif %}
+      </div>
+      <br><br>
+
+
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <p style="color:black;"><strong> © 2019. Onose_Anthonii Inc | PaperCode C.S </strong> </p>
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+      <!-- preloader -->
+      <div id='preloader'><div class='preloader'></div></div>
+      <!-- /preloader -->
+
+
+      <!-- Custom Jquery -->
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight){
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          }
+        });
+      }
+      </script>
+      <!-- /Custom Jquery -->
+
+
+      <!-- jQuery Plugins -->
+      <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+
+  </body>
+</html>

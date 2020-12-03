@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>This is the Authenticated edit profile Page</h1>
+
+    <form class="" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" name="" value="submit">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Fupre, Siwes, Portal">
+    <meta name="author" content="PaperCode C.S">
+    <meta name="description" content="This is a site to enable eligible students of the Federal University of Petroleum Resources Effurun
+                register for the student industrial work experience scheme (SIWES)">
+
+    <title>Dashboard</title>
+
+    <!-- Bootstrap -->
+		<link type="text/css" rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet"  href="{% static 'css/style.css' %}"/>
+  </head>
+  <body>
+
+      <br>
+
+      <!-- Header -->
+      <header id="header" class="">
+        <div class="container">
+
+          <div class="navbar-header">
+            <!-- Logo -->
+            <div class="navbar-brand">
+              <a class="logo" href="{% url 'accounts:view_profile' %}">
+                <img src="{% static "images/banner.png" %}" alt="Uh. Oh! Resource not found">
+              </a>
+            </div>
+            <!-- /Logo -->
+
+            <!-- Mobile toggle -->
+            <button class="navbar-toggle">
+              <span></span>
+            </button>
+            <!-- /Mobile toggle -->
+          </div>
+
+
+          <!-- Navigation -->
+          <nav id="nav">
+            <ul class="main-menu nav navbar-nav navbar-right">
+              <li><a style="color:black;"href="{% url 'accounts:view_profile' %}">Dashboard</a></li>
+              <!-- <li><a href="/accounts/profile/edit">Edit Profile</a></li> -->
+              <li><a style="color:black;" href="{% url 'accounts:edit_details' %}">Siwes Info</a></li>
+              <li><a style="color:black;" href="{% url 'accounts:payments' %}">Payments</a></li>
+              <li><a style="color:black;" href="{% url 'accounts:change_password' %}">Change Password</a></li>
+              <li><a style="color:black;" href="{% url 'accounts:user_logout' %}">Log out</a></li>
+            </ul>
+          </nav>
+          <!-- /Navigation -->
+
+
+        </div>
+      </header>
+      <!-- /Header -->
+        <br><br>
+        <div class="">
+          <div  class="row">
+            {% if user.image %}
+            <div class="col-md-3">
+              <img src="{{ user.image.url }}" alt="Avatar" class="avatar" style="display:block;margin-left: auto;margin-right: auto;margin-top:15px;vertical-align:middle;width:200px;height:200px;border-radius:50%;">
+            </div>
+            {% else %}
+            <div class="col-md-3">
+              <img src="{% static "images/avatar.png" %}" alt="Avatar" class="avatar" style="border-radius:50%;display:block;margin-left: auto;margin-right: auto;margin-top:15px;vertical-align:middle;width:200px;height:200px;border-radius:50%;">
+              <h5 style="color:black;text-align:center; display:50%;margin-left:auto;margin-right:auto;vertical-align:middle;"></h5>
+            </div>
+            {% endif %}
+            <div class="col-md-6">
+              <h3 style="color:#C00;" >Welcome, {{ user.full_name|upper }}</h3>
+              <div class="">
+                <strong style="color:black;">Matric No:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.matric_no}} </strong>
+              </div>
+              <p></p>
+              <div class="">
+                  <strong style="color:black;">Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.email}} </strong>
+              </div>
+              <p></p>
+              <div class="">
+                  <strong style="color:black;">College: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.College}} </strong>
+              </div>
+              <p></p>
+              <div class="">
+                  <strong style="color:black;">Department: &nbsp;&nbsp;&nbsp;&nbsp;{{user.department}} </strong>
+              </div>
+              <p></p>
+              <div class="">
+                  <strong style="color:black;">Level: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.level}} </strong>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div style="background-color: green;color:white;margin-top:15px;"class="btn btn-success">
+                <strong style="color:white;">Status:IN-SCHOOL</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+        <div class="container">
+          <div class="row">
+              <div style="background-color:transparent;" class="alert alert-success fade in">
+                <strong style="color:#C00;">Current Session: 2018/2019 [ Second Semester ]</strong>
+              </div>
+            </div>
+          </div>
+          <br><br>
+
+        <div class="container">
+          <div class="row">
+          <h2 style="color:#C00;vertical-align:middle;text-align:center"> Siwes & Industrial Placement Information </h2>
+        </div>
+      </div>
+      <br>
+
+        <div style="" class="container">
+          <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-10">
+              {% if user.siwesinformation.bankName %}
+              <div class="">
+                <strong style="color:black;">Bank Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {{user.siwesinformation.bankName}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                <strong style="color:black;">Bank Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.accountNo %}
+              <div class="">
+                  <strong style="color:black;">Account No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{user.siwesinformation.accountNo}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                  <strong style="color:black;">Account No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.sort_code %}
+              <div class="">
+                  <strong style="color:black;">Sort Code: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;{{user.siwesinformation.sort_code}} </strong>
+
+              </div>
+              {% else %}
+              <div class="">
+                  <strong style="color:black;">Sort Code: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp; </strong>
+
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.phoneNo %}
+              <div class="">
+                  <strong style="color:black;">Phone No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;{{user.siwesinformation.phoneNo}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                  <strong style="color:black;">Phone No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp; </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.industryName %}
+              <div class="">
+                <strong style="color:black;">Industry Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{user.siwesinformation.industryName}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                <strong style="color:black;">Industry Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                             </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.industrySupervisorname %}
+              <div class="">
+                  <strong style="color:black;">Industry Supervisor Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.siwesinformation.industrySupervisorname}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                  <strong style="color:black;">Industry Supervisor Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.industrySupervisorPhoneno %}
+              <div class="">
+                  <strong style="color:black;">Industry Supervisor Phone No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;{{user.siwesinformation.industrySupervisorPhoneno}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                  <strong style="color:black;">Industry Supervisor Phone No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp; </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+              {% if user.siwesinformation.industryAddress %}
+              <div class="">
+                  <strong style="color:black;">Industry Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.siwesinformation.industryAddress}} </strong>
+              </div>
+              {% else %}
+              <div class="">
+                  <strong style="color:black;">Industry Address: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+              </div>
+              {% endif %}
+              <p></p>
+
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+        <div class="container">
+          <div class="row">
+          <h2 style="color:#C00;vertical-align:middle;text-align:center"> University Supervisor Information </h2>
+        </div>
+      </div>
+      <br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-10">
+            {% if  user.supervisorinformation.supervisorName %}
+            <div class="">
+              <strong style="color:black;">Supervisor Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{user.supervisorinformation.supervisorName}} </strong>
+            </div>
+            <p></p>
+            <div class="">
+              <strong style="color:black;">Supervisor Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{user.supervisorinformation.supervisorEmail}} </strong>
+            </div>
+            <p></p>
+            <div class="">
+              <strong style="color:black;">Supervisor Phone No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{user.supervisorinformation.supervisorPhone}} </strong>
+            </div>
+            <p></p>
+            <div class="">
+              <strong style="color:black;">Supervisor Department: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        {{user.supervisorinformation.supervisorDept}} </strong>
+            </div>
+            <p></p>
+            {% else %}
+            <div style="background-color:green;" class="alert alert-success ">
+              <strong style="color:white;">Check Back Later for Your Supervisor Information</strong>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <br><br>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h2 style="color:#C00;text-align:left;">Quick Portal Tips</h2>
+                    <ol>
+                      <li> <h4 style="color:black;">1. Update all Neccesary information related to the Siwes Programme Via the Siwes Info Tab.</h4></li>
+                      <li> <h4 style="color:black;">2. In case of Change in Placement location update such information using the Siwes Edit Form. </h4></li>
+                      <li> <h4 style="color:black;">3. Make the required Payment and proceed with receipt to the appropriate offices to obtain related forms and logbook.</h4></li>
+                      <li> <h4 style="color:black;">4. Check Dashboard continuously as Supervisors Details would be updated on a later date</h4></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <p style="color:black;"><strong> © 2019. Onose_Anthonii Inc | PaperCode C.S </strong> </p>
+              </div>
+            </div>
+            </div>
+
+
+
+            <!-- preloader -->
+            <div id='preloader'><div class='preloader'></div></div>
+            <!-- /preloader -->
+
+            <!-- jQuery Plugins -->
+            <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+            <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+            <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+
+  </body>
+</html>
